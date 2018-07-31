@@ -1,0 +1,62 @@
+﻿@{
+    Layout = "_Layout";
+    var result = ((IEnumerable<Tuple<Post, int>>)Model)?.ToList();
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Task1</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 5px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Task 1</h1>
+    <p>Please enter number from 1 to 100: </p>
+
+    <form method="post" 
+          action="~/Tasks/Task1">
+        <input type="text"
+               name="number"
+               value="@ViewBag.UserId" />
+
+        <input type="submit"
+               value="Send" />
+    </form>
+    <br />
+
+    @if (result != null && result.Count > 0)
+    {
+        <table>
+            <tr>
+                <th>Post</th>
+                <th>Comment count</th>
+            </tr>
+            @foreach (var tuple in result)
+            {
+            <tr>
+                <td>@tuple.Item1.Title</td>
+                <td>@tuple.Item2</td>
+            </tr>
+            }
+        </table>
+    }
+    else if (ViewBag.UserId > 0)
+    {
+        <p>No posts for user with ID: @ViewBag.UserId</p>
+    }
+
+</body>
+</html>

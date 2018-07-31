@@ -1,0 +1,18 @@
+﻿@model Tuple<Post, Comment, Comment, int>
+
+<table>
+    <tr>
+        <td>Id</td>
+        <td>Title</td>
+        <td>Created at</td>
+        <td>Body</td>
+        <td>Amount of likes</td>
+    </tr>
+    <tr>
+        <td>@Model.Item1.Id</td>
+        <td>@Model.Item1.Title</td>
+        <td>@Model.Item1.CreatedAt</td>
+        <td>@Model.Item1.Body</td>
+        <td>@Model.Item1.Likes</td>
+    </tr>
+</table>

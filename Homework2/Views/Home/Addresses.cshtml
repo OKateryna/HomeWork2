@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "Addresses";
+    var addresses = (IEnumerable<Address>)Model;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Addresses</title>
+    <style>
+        table, th, td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            margin: 5px 0px 5px 0px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+            margin: 2px;
+        }
+        }
+    </style>
+</head>
+<body>
+    <h2>@ViewData["Title"]</h2>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Country</th>
+            <th>City</th>
+        </tr>
+        @foreach (var address in addresses)
+        {
+            <tr>
+                <td>@address.Id</td>
+                <td>@address.Country</td>
+                <td>@address.City</td>
+            </tr>
+        }
+        </table>
+</body>
+</html>

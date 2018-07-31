@@ -1,0 +1,101 @@
+﻿@{
+    ViewData["Title"] = "Users";
+    var users = (IEnumerable<User>)Model;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Users</title>
+    <style>
+        table, th, td {
+            border: 2px solid blue;
+            border-collapse: collapse;
+            margin: 5px 0px 5px 0px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+            margin: 2px;
+        }
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 40%;
+        }
+
+        .column {
+            float: left;
+            width: 50%;
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <h2>@ViewData["Title"]</h2>
+    @foreach (var user in users)
+    {
+        <div class="row">
+            <div class="column">
+                <img src="@user.Avatar" alt="@user.Name's avatar" class="center">
+            </div>
+            <div class="column">
+                <table>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Created at</th>
+                        <th>Email</th>
+                    </tr>
+                    <tr>
+                        <td>@user.Id</td>
+                        <td>@user.Name</td>
+                        <td>@user.CreatedAt</td>
+                        <td>@user.Email</td>
+                    </tr>
+                </table>
+                @if (user.Posts != null & user.Posts.Count() > 0)
+                {
+                    <h4>
+                        <b>Posts:</b>
+                    </h4>
+                    @foreach (var post in user.Posts)
+                    {
+                        <table>
+                            <tr>
+                                <th>Title</th>
+                                <th>Body</th>
+                                <th>Likes</th>
+                            </tr>
+                            <tr>
+                                <td>@post.Title</td>
+                                <td>@post.Body</td>
+                                <td>@post.Likes</td>
+                            </tr>
+                        </table>
+                        if (post.Comments != null & post.Comments.Count() > 0)
+                        {
+                            <h4>
+                                <b>Comments:</b>
+                            </h4>
+                            @foreach (var com in post.Comments)
+                            {
+                                <i>@com.Body</i>
+                            }
+                        }
+                    }
+                }
+            </div>
+        </div>
+        <hr />
+    }
+</body>
+</html>

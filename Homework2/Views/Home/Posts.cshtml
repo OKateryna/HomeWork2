@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Posts";
+    var posts = (IEnumerable<Post>)Model;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Posts</title>
+    <style>
+        table, th, td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            margin: 5px 0px 5px 0px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+            margin: 2px;
+        }
+        }
+    </style>
+</head>
+<body>
+    <h2>@ViewData["Title"]</h2>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Body</th>
+            <th>Created at</th>
+            <th>Amount of likes</th>
+        </tr>
+        @foreach (var post in posts)
+        {
+            <tr>
+                <td>@post.Id</td>
+                <td>@post.Title</td>
+                <td>@post.Body</td>
+                <td>@post.CreatedAt</td>
+                <td>@post.Likes</td>
+            </tr>
+        }
+    </table>
+</body>
+</html>

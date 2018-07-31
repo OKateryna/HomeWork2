@@ -1,0 +1,25 @@
+﻿@model Tuple<User, Post, int, int, Post, Post>
+
+    <table>
+        <tr>
+            <td>
+                <img src="@Model.Item1.Avatar" alt="@Model.Item1.Name's avatar">
+            </td>
+            <td>
+                <table>
+                    <tr>
+                        <td>Id</td>
+                        <td>Name</td>
+                        <td>Created at</td>
+                        <td>Email</td>
+                    </tr>
+                    <tr>
+                        <td>@Model.Item1.Id</td>
+                        <td>@Model.Item1.Name</td>
+                        <td>@Model.Item1.CreatedAt</td>
+                        <td>@Model.Item1.Email</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>

@@ -1,0 +1,56 @@
+﻿@{
+    Layout = "_Layout";
+    var userslist = ((IEnumerable<User>)Model)?.ToList();
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Task4</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 5px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Task 4</h1>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Avatar</th>
+            <th>CreatedAt</th>
+            <th>Email</th>
+            <th>Posts</th>
+            <th>Todos</th>
+            <th>Address</th>
+        </tr>
+        @foreach (var user in userslist)
+        {
+        <tr>
+            <td>@user.Id</td>
+            <td>@user.Name</td>
+            <td>
+                <img src="@user.Avatar" alt="@user.Name 's avatar">
+            </td>
+            <td>@user.CreatedAt</td>
+            <td>@user.Email</td>
+            <td>@user.Posts</td>
+            <td>@user.Todos</td>
+            <td>@user.Adress</td>
+        </tr>
+        }
+    </table>
+    
+</body>
+</html>

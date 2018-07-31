@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "Comments";
+    var comments = (IEnumerable<Comment>)Model;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Comments</title>
+    <style>
+        table, th, td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            margin: 5px 0px 5px 0px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+            margin: 2px;
+        }
+        }
+    </style>
+</head>
+<body>
+    <h2>@ViewData["Title"]</h2>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Body</th>
+            <th>Created at</th>
+            <th>Amount of likes</th>
+        </tr>
+        @foreach (var comment in comments)
+        {
+            <tr>
+                <td>@comment.Id</td>
+                <td>@comment.Body</td>
+                <td>@comment.CreatedAt</td>
+                <td>@comment.Likes</td>
+            </tr>
+        }
+    </table>
+</body>
+</html>

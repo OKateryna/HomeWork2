@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "Todos";
+    var todos = (IEnumerable<Todo>)Model;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Todos</title>
+    <style>
+        table, th, td {
+            border: 2px solid black;
+            border-collapse: collapse;
+            margin: 5px 0px 5px 0px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+            margin: 2px;
+        }
+
+        }
+    </style>
+</head>
+<body>
+    <h2>@ViewData["Title"]</h2>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Created at</th>
+            <th>Is complete</th>
+        </tr>
+        @foreach (var todo in todos)
+        {
+            <tr>
+                <td>@todo.Id</td>
+                <td>@todo.Name</td>
+                <td>@todo.CreatedAt</td>
+                <td>@todo.IsComplete</td>
+            </tr>
+        }
+    </table>
+</body>
+</html>
